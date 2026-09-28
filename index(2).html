@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="도서관 실무자를 위한 AI 업무 도우미" />
+  <title>LIBRAI | 도서관 AI 업무 도우미</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">L</div>
+        <div>
+          <strong>LIBRAI</strong>
+          <span>Library AI Desk</span>
+        </div>
+      </div>
+
+      <button class="new-chat" id="newChatBtn">＋ 새 대화 시작</button>
+
+      <section class="panel-section">
+        <div class="section-label">AI 모델</div>
+        <select id="modelSelect" class="select-control">
+          <option value="google/gemini-2.5-flash">Gemini 2.5 Flash</option>
+          <option value="openai/gpt-4.1-mini">GPT-4.1 mini</option>
+          <option value="anthropic/claude-3.7-sonnet">Claude 3.7 Sonnet</option>
+        </select>
+      </section>
+
+      <section class="panel-section">
+        <div class="section-label">도서관 업무 모드</div>
+        <div class="persona-grid" id="personaGrid">
+          <button class="persona active" data-persona="reference">🔎 자료검색</button>
+          <button class="persona" data-persona="kdc">📚 KDC 분류</button>
+          <button class="persona" data-persona="civil">💬 민원응대</button>
+          <button class="persona" data-persona="program">🎪 독서행사</button>
+          <button class="persona" data-persona="report">📝 공문·보고서</button>
+        </div>
+      </section>
+
+      <section class="panel-section persona-info">
+        <div class="section-label">현재 역할</div>
+        <div class="role-card">
+          <div class="role-icon" id="roleIcon">🔎</div>
+          <div>
+            <strong id="roleTitle">자료검색 도우미</strong>
+            <p id="roleDescription">이용자 질문을 정리하고 검색 전략과 답변 초안을 제안합니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="sidebar-foot">
+        <span class="status-dot"></span>
+        <span>Vercel Serverless + OpenRouter</span>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenuBtn" aria-label="메뉴 열기">☰</button>
+        <div>
+          <span class="eyebrow">SEOUL LIBRARY WORKFLOW</span>
+          <h1>도서관 AI 업무 도우미</h1>
+        </div>
+        <div class="top-actions">
+          <button class="ghost-btn" id="clearBtn">대화 삭제</button>
+        </div>
+      </header>
+
+      <section class="chat-wrap">
+        <div class="chat-feed" id="chatFeed" aria-live="polite">
+          <div class="welcome-card" id="welcomeCard">
+            <div class="welcome-badge">LIBRARY COPILOT</div>
+            <h2>오늘 어떤 도서관 업무를 같이 처리할까요?</h2>
+            <p>실무 모드를 선택한 뒤 질문을 입력하세요. 아래 예시를 누르면 바로 시작할 수 있습니다.</p>
+            <div class="quick-grid" id="quickGrid"></div>
+          </div>
+        </div>
+
+        <div class="composer-wrap">
+          <div class="attachment-preview" id="attachmentPreview" hidden></div>
+          <div class="composer">
+            <label class="attach-btn" title="텍스트 자료 첨부">
+              📎
+              <input id="fileInput" type="file" accept=".txt,.md,.csv,.json" hidden />
+            </label>
+            <textarea id="promptInput" rows="1" placeholder="예: 초등학생이 찾는 ‘조선시대 과학’ 자료검색 질문을 정리해줘"></textarea>
+            <button class="send-btn" id="sendBtn">전송</button>
+          </div>
+          <div class="composer-note">개인정보·민감정보는 입력하지 마세요. AI 답변은 최종 검토 후 업무에 활용하세요.</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
