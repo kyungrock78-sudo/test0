@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="민원인이 원하는 민원 서비스를 빠르게 검색하고 분야별로 찾을 수 있는 민원서비스 안내 페이지" />
+  <title>민원서비스 빠른찾기</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__inner">
+      <p class="eyebrow">시민 민원서비스 안내</p>
+      <h1>필요한 민원서비스를<br />빠르게 찾아보세요</h1>
+      <p class="hero__desc">서비스명으로 검색하고 민원분야를 선택하면 원하는 서비스를 한눈에 확인할 수 있습니다.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="search-panel" aria-label="민원서비스 검색 및 필터">
+      <div class="search-wrap">
+        <label class="field-label" for="searchInput">서비스명 검색</label>
+        <div class="search-box">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" placeholder="예: 여권, 주민등록, 연금" autocomplete="off" />
+          <button id="clearSearch" class="clear-btn" type="button" aria-label="검색어 지우기">×</button>
+        </div>
+      </div>
+
+      <div class="filter-wrap">
+        <span class="field-label">민원분야</span>
+        <div id="categoryFilters" class="filter-list" role="group" aria-label="민원분야 필터"></div>
+      </div>
+
+      <div class="summary-row" aria-live="polite">
+        <div>
+          <span class="summary-label">현재 표시</span>
+          <strong id="visibleCount" class="summary-count">22건</strong>
+        </div>
+        <p id="searchStatus" class="search-status">전체 22건의 서비스를 표시하고 있습니다.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="serviceListTitle">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">서비스 목록</p>
+          <h2 id="serviceListTitle">민원서비스 22건</h2>
+        </div>
+        <span class="total-badge">총 <strong id="totalCount">22</strong>건</span>
+      </div>
+
+      <div id="serviceList" class="service-grid"></div>
+
+      <div id="emptyState" class="empty-state" hidden>
+        <div class="empty-icon" aria-hidden="true">🔎</div>
+        <h3>검색 결과가 없습니다</h3>
+        <p>다른 서비스명이나 민원분야를 선택해 보세요.</p>
+        <button id="resetFilters" type="button" class="primary-btn">검색 조건 초기화</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>민원서비스 빠른찾기</p>
+      <p>첨부 민원서비스 목록 22건 기준</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
